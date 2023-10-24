@@ -1,7 +1,7 @@
-import React, { useMemo } from 'react';
+import React, { ReactElement, useMemo } from 'react';
 import { currencyFormat, type Item as ItemType } from '../../../util';
 
-const Item = ({ info, taxPercent, deleteItem }: { info: ItemType, taxPercent: number, deleteItem: (id: string) => void }): JSX.Element => {
+const Item = ({ info, taxPercent, deleteItem }:{ info: ItemType, taxPercent: number, deleteItem: (id: string) => void }): ReactElement => {
   const { label, cost, split, id } = info;
 
   const costWithTax = useMemo(() => {

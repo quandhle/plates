@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable no-debugger */
 import React, { ChangeEvent, ReactElement, useState } from 'react';
 import { capitalizeFirstLetter } from '../../util';
 import Modal from './Modal';
