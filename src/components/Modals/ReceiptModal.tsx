@@ -1,15 +1,8 @@
 /* eslint-disable no-console */
 /* eslint-disable no-debugger */
 import React, { ChangeEvent, ReactElement, useMemo, useState } from 'react';
-import { Receipt, capitalizeFirstLetter, currencyFormat } from '../../util';
+import { capitalizeFirstLetter, currencyFormat, FieldInput, Receipt } from '../../util';
 import Modal from './Modal';
-
-interface Field {
-  placeholder: string,
-  name: string,
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void,
-  value: unknown,
-}
 
 const ReceiptModal = ({
   showModal,
@@ -38,7 +31,7 @@ const ReceiptModal = ({
   };
 
 
-  const RECEIPT_FIELDS: Field[] = [
+  const RECEIPT_FIELDS: FieldInput[] = [
     {
       placeholder: 'Event Name',
       name: 'name',
@@ -46,6 +39,7 @@ const ReceiptModal = ({
         setEventName(e.target.value);
       },
       value: eventName,
+      type: 'text',
     },
     {
       placeholder: 'Subtotal',
@@ -54,6 +48,7 @@ const ReceiptModal = ({
         setSubtotal(parseFloat(e.target.value) || 0);
       },
       value: subtotal || 0,
+      type: 'number',
     },
     {
       placeholder: 'Tax',
@@ -62,6 +57,7 @@ const ReceiptModal = ({
         setTax(parseFloat(e.target.value) || 0);
       },
       value: tax || 0,
+      type: 'number',
     },
     {
       placeholder: 'Tip',
@@ -70,6 +66,7 @@ const ReceiptModal = ({
         setTip(parseFloat(e.target.value) || 0);
       },
       value: tax || 0,
+      type: 'number',
     },
     {
       placeholder: 'People',
@@ -78,6 +75,7 @@ const ReceiptModal = ({
         setPeople(e.target.value.split("[^\\p{L}0-9']+"));
       },
       value: people.join(', '),
+      type: 'text',
     },
   ];
 

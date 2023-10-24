@@ -1,15 +1,6 @@
-import React, { ChangeEvent, ReactElement, useState } from 'react';
-import { capitalizeFirstLetter } from '../../util';
+import React, { ReactElement, useState } from 'react';
+import { capitalizeFirstLetter, FieldInput } from '../../util';
 import Modal from './Modal';
-
-interface ITEM_FIELD {
-  placeholder: string,
-  name: string,
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void,
-  value: unknown,
-  type: string
-}
-
 
 const ReceiptModal = ({
                         showModal,
@@ -34,7 +25,7 @@ const ReceiptModal = ({
     setShowModal(false);
   };
 
-  const ITEM_FIELDS: ITEM_FIELD[] = [
+  const ITEM_FIELDS: FieldInput[] = [
     {
       placeholder: 'Item',
       name: 'item',
