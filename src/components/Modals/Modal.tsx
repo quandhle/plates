@@ -20,7 +20,7 @@ const Modal = ({
           }}
           className="flex-col align-middle items-center absolute p-4 w-1/2 left-1/2 top-1/2 bg-white border-2 transition ease-in-out visible opacity-100 shadow-gray-100"
         >
-          <div className="text-center py-4 w-full">{title}</div>
+          <div className="text-center pb-4 w-full">{title}</div>
           {children}
         </div>
       )}

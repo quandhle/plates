@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-debugger */
 import React, { ChangeEvent, ReactElement, useMemo, useState } from 'react';
-import { Receipt, capitalizeFirstLetter } from '../../util';
+import { Receipt, capitalizeFirstLetter, currencyFormat } from '../../util';
 import Modal from './Modal';
 
 interface Field {
@@ -64,8 +64,8 @@ const ReceiptModal = ({
       value: tax || 0,
     },
     {
-      placeholder: 'Tax',
-      name: 'tax',
+      placeholder: 'Tip',
+      name: 'tip',
       onChange: e => {
         setTip(parseFloat(e.target.value) || 0);
       },
@@ -100,7 +100,7 @@ const ReceiptModal = ({
 
           );
         })}
-        <div className="pt-4 right-0">Total: {total}</div>
+        <div className="pt-4 right-0">Total: {currencyFormat(total)}</div>
       </div>
       <div className="flex items-center justify-end">
         <button onClick={handleReset} className="pr-5">
