@@ -75,6 +75,7 @@ const App = (): ReactElement => {
             items={items}
             addItem={addItem}
             deleteItem={deleteItem}
+            showReceiptModal={setShowModal}
           />
           <TotalsSummary costPP={costPerPerson} receipt={receipt} />
         </Fragment>

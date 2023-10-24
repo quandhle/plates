@@ -1,6 +1,4 @@
-/* eslint-disable no-console */
-/* eslint-disable no-debugger */
-import React, { ChangeEvent, ReactElement, useMemo, useState } from 'react';
+import React, { ReactElement, useMemo, useState } from 'react';
 import { capitalizeFirstLetter, currencyFormat, FieldInput, Receipt } from '../../util';
 import Modal from './Modal';
 
@@ -18,6 +16,7 @@ const ReceiptModal = ({
   const [tax, setTax] = useState<number | null>(null);
   const [tip, setTip] = useState<number | null>(null);
   const [people, setPeople] = useState<string[]>([]);
+  const [error, setError] = useState<string>('');
 
   const total = useMemo(() => {
     return (subtotal || 0) + (tax || 0) + (tip || 0);
@@ -28,6 +27,7 @@ const ReceiptModal = ({
     setSubtotal(null);
     setTax(null);
     setTip(null);
+    setError('');
   };
 
 
@@ -98,8 +98,9 @@ const ReceiptModal = ({
 
           );
         })}
-        <div className="pt-4 right-0">Total: {currencyFormat(total)}</div>
       </div>
+      {error && <div className='text-red-700 pt-2'>{error}</div>}
+      <div className='pt-4 right-0'>Total: {currencyFormat(total)}</div>
       <div className="flex items-center justify-end">
         <button onClick={handleReset} className="pr-5">
           Reset
@@ -111,8 +112,11 @@ const ReceiptModal = ({
                 { subtotal: subtotal || 0, tax: tax || 0, tip: tip || 0 },
                 eventName,
                 people
-              );
+              )
+              setError("")
               setShowModal(false);
+            } else {
+              setError('Missing event name and/or subtotal');
             }
           }}
         >
