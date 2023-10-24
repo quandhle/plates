@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import PersonSummary from './PersonSummary';
 import { capitalizeFirstLetter, currencyFormat, Receipt } from '../../util';
 
@@ -8,7 +8,7 @@ const TotalsSummary = ({
 }: {
   costPP: Record<string, number>;
   receipt: Receipt;
-}): JSX.Element => {
+}): ReactElement => {
   const { subtotal, tax, tip } = receipt;
   return (
     <div className="w-1/2 h-full flex-col p-4">

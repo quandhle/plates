@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable no-debugger */
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, ReactElement, useState } from 'react';
 import { capitalizeFirstLetter } from '../../util';
 import Modal from './Modal';
 
@@ -21,7 +21,7 @@ const ReceiptModal = ({
   showModal: boolean;
   setShowModal: (showModal: boolean) => void;
   handleSubmit: (cost: number, name: string, people: string[]) => void;
-}): JSX.Element => {
+}): ReactElement => {
   const [item, setItem] = useState<string>('');
   const [cost, setCost] = useState<number | null>(null);
   const [split, setSplit] = useState<string[]>([]);

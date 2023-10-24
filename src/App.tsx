@@ -1,11 +1,11 @@
-import React, { Fragment, useMemo, useState } from 'react';
+import React, { Fragment, ReactElement, useMemo, useState } from 'react';
 import './App.css';
 import EventSummary from './components/EventSummary';
 import TotalsSummary from './components/TotalsSummary';
 import { ReceiptModal } from './components/Modals';
 import { generateUUID, Item as ItemType, Receipt } from './util';
 
-const App = (): JSX.Element => {
+const App = (): ReactElement => {
   const [eventName, setEventName] = useState<string>('');
   const [receipt, setReceipt] = useState<null | Receipt>(null);
   const [showModal, setShowModal] = useState<boolean>(true);
