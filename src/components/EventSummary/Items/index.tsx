@@ -1,6 +1,6 @@
-import { Fragment } from 'react'
+import React, { Fragment, ReactElement } from 'react';
 import Item from './Item'
-import { type Item as ItemType, Receipt } from '../../../util';
+import { type Item as ItemType } from '../../../util';
 import { AddItemModal } from '../../Modals';
 
 const Items = ({
@@ -17,16 +17,7 @@ const Items = ({
   items: ItemType[],
   addItem: (cost: number, name: string, people: string[]) => void
   deleteItem: (id: string) => void;
-}): JSX.Element => {
-
-  // const addItem = (item: ItemType) => {
-  //   setItems([...items, item] )
-  // }
-
-  // const deleteItem= (id: string) => {
-  //   setItems(items.filter(item => item.id !== id));
-  // }
-
+}): ReactElement => {
   return (
     <Fragment>
       <AddItemModal
@@ -48,6 +39,15 @@ const Items = ({
           </div>
         </div>
         <div>
+          {items.length > 0 &&
+            <div className="flex items-center justify-between w-full">
+              <p className="w-1/4">Item</p>
+              <p>Cost</p>
+              <p>Cost w/ Tax</p>
+              <p>Cost pp</p>
+              <p className="w-1/4">Split</p>
+            </div>
+          }
           {items.map(item => (
             <Item
               key={item.label}

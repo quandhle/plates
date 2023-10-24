@@ -75,7 +75,7 @@ const ReceiptModal = ({
       placeholder: 'People',
       name: 'people',
       onChange: e => {
-        setPeople(e.target.value.split("[^a-zA-Z0-9']+"));
+        setPeople(e.target.value.split("[^\\p{L}0-9']+"));
       },
       value: people.join(', '),
     },

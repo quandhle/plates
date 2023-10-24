@@ -59,7 +59,7 @@ const ReceiptModal = ({
       placeholder: 'Split',
       name: 'split',
       onChange: e => {
-        setSplit(e.target.value.split('[^a-zA-Z0-9\']+'));
+        setSplit(e.target.value.split("[^\\p{L}0-9']+"));
       },
       value: split.join(', '),
       type: 'text',

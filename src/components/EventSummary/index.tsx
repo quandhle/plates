@@ -20,7 +20,8 @@ const EventSummary = ({
   return (
     <div className="flex-col align-middle items-center w-1/2 h-full bg-zinc-300 p-4">
       <div className="flex items-center">
-        <header className="text-2xl">Event: {eventName}</header>
+        <header className="text-2xl pb-4">Event: {eventName}</header>
+        {/*TODO add edit functionality for even name*/}
         {/*<button onClick={() => {}} className="pl-4">*/}
         {/*  Edit*/}
         {/*</button>*/}

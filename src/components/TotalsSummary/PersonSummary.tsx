@@ -1,11 +1,10 @@
-import React from 'react'
+import React, { ReactElement } from 'react';
+import { capitalizeFirstLetter, currencyFormat } from '../../util';
 
-const PersonSummary = ({ name, total }: { name: string, total: number }): JSX.Element => {
+const PersonSummary = ({ name, total }: { name: string, total: number }): ReactElement => {
   return (
-        <div className="flex align-middle items-center">
-            <div>{name}</div>
-            <div>{total}</div>
-        </div>
+    <p className='flex'><span
+      className='w-1/4'>{capitalizeFirstLetter(name)}: </span><span>{currencyFormat(total)}</span></p>
   )
 }
 
