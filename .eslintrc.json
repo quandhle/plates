@@ -17,6 +17,6 @@
   "plugins": ["react", "react-hooks"],
   "rules": {
     "max-len": ["warn", { "code": 80 }],
-    "no-console": "error"
+    "no-console": "warn"
   }
 }

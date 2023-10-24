@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import Items from './Items';
 import { Item } from '../../util';
 
@@ -12,18 +12,18 @@ const EventSummary = ({
   eventName: string;
   taxPercent: number;
   items: Item[];
-  addItem: (item: Item) => void;
+  addItem: (cost: number, name: string, people: string[]) => void
   deleteItem: (id: string) => void;
-}): JSX.Element => {
+}): ReactElement => {
   const [showAddItemModal, setShowAddItemModal] = useState<boolean>(false);
 
   return (
-    <div className="flex-col align-middle items-center w-1/2 h-full bg-green-400">
+    <div className="flex-col align-middle items-center w-1/2 h-full bg-zinc-300 p-4">
       <div className="flex items-center">
-        <div>{eventName}</div>
-        <button onClick={() => {}} className="pl-4">
-          Edit
-        </button>
+        <header className="text-2xl">Event: {eventName}</header>
+        {/*<button onClick={() => {}} className="pl-4">*/}
+        {/*  Edit*/}
+        {/*</button>*/}
       </div>
       <Items
         taxPercent={taxPercent}

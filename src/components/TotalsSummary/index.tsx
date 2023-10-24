@@ -1,6 +1,6 @@
 import React from 'react';
 import PersonSummary from './PersonSummary';
-import { Receipt } from '../../util';
+import { capitalizeFirstLetter, currencyFormat, Receipt } from '../../util';
 
 const TotalsSummary = ({
   costPP,
@@ -11,8 +11,8 @@ const TotalsSummary = ({
 }): JSX.Element => {
   const { subtotal, tax, tip } = receipt;
   return (
-    <div className="w-1/2 h-full flex-col">
-      <div>Totals</div>
+    <div className="w-1/2 h-full flex-col p-4">
+      <header className="text-2xl">Totals</header>
       <div className="flex-col">
         {Object.keys(costPP).map(person => {
           return (
@@ -21,10 +21,15 @@ const TotalsSummary = ({
         })}
       </div>
       <div>
-        <p>Subtotal: {subtotal}</p>
-        <p>Tax: {tax}</p>
-        <p>Tip: {tip}</p>
-        <p>Total: {subtotal + tax + tip}</p>
+        {Object.keys(receipt).map((key, i) => {
+          return (
+            <p key={i} className="flex"><span className="w-1/4">{capitalizeFirstLetter(key)}: </span><span>{currencyFormat(receipt[key as never])}</span></p>
+          )
+        })}
+        {/*<p>Subtotal: {subtotal}</p>*/}
+        {/*<p>Tax: {currencyFormat(tax)}</p>*/}
+        {/*<p>Tip: {currencyFormat(tip)}</p>*/}
+        <p className="pt-2">Total: {currencyFormat(subtotal + tax + tip)}</p>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import Item from './Item'
-import { type Item as ItemType } from '../../../util';
+import { type Item as ItemType, Receipt } from '../../../util';
 import { AddItemModal } from '../../Modals';
 
 const Items = ({
@@ -15,7 +15,7 @@ const Items = ({
   setShowAddItemModal: (show: boolean) => void,
   taxPercent: number,
   items: ItemType[],
-  addItem: (item: ItemType) => void;
+  addItem: (cost: number, name: string, people: string[]) => void
   deleteItem: (id: string) => void;
 }): JSX.Element => {
 
@@ -29,14 +29,14 @@ const Items = ({
 
   return (
     <Fragment>
-      <AddItemModal 
-        addItem={addItem}
+      <AddItemModal
+        handleSubmit={addItem}
         showModal={showAddItemModal}
         setShowModal={setShowAddItemModal}
       />
       <div className="flex-col items-center">
         <div className="flex items-center justify-between relative">
-          <div className='flex items-center justify-center w-full'>Items</div>
+          <header className='w-full text-center'>Items</header>
           <div className='absolute right-0'>
             <button
               onClick={() => {

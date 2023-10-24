@@ -17,3 +17,11 @@ export const generateUUID = () => {
     });
 }
 
+export const currencyFormat = (value: number): string => {
+    return '$' + value.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+}
+
+export const capitalizeFirstLetter = (value: string): string => {
+    return value.charAt(0).toUpperCase() + value.slice(1)
+}
+

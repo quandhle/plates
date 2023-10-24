@@ -2,9 +2,8 @@ import React, { Fragment, useMemo, useState } from 'react';
 import './App.css';
 import EventSummary from './components/EventSummary';
 import TotalsSummary from './components/TotalsSummary';
-import { ReceiptModal as InitModal } from './components/Modals';
-import { Receipt } from './util';
-import { Item as ItemType } from './util';
+import { ReceiptModal } from './components/Modals';
+import { generateUUID, Item as ItemType, Receipt } from './util';
 
 const App = (): JSX.Element => {
   const [eventName, setEventName] = useState<string>('');
@@ -13,8 +12,18 @@ const App = (): JSX.Element => {
   const [items, setItems] = useState<ItemType[]>([]);
   const [people, setPeople] = useState<string[]>([]);
 
-  const addItem = (item: ItemType) => {
-    setItems([...items, item]);
+  const addItem = (cost: number, name: string, people: string[]): void => {
+    setItems([...items,
+      {
+        id: generateUUID(),
+        label: name,
+        cost: cost,
+        split: people
+      }
+    ])
+    setEventName(name);
+    setPeople(people);
+    setReceipt(receipt);
   };
 
   const deleteItem = (id: string) => {
@@ -43,8 +52,6 @@ const App = (): JSX.Element => {
       });
     });
 
-    // eslint-disable-next-line no-console
-    console.log({ costs });
     return costs;
   }, [people, items]);
 
@@ -72,7 +79,7 @@ const App = (): JSX.Element => {
           <TotalsSummary costPP={costPerPerson} receipt={receipt} />
         </Fragment>
       )}
-      <InitModal
+      <ReceiptModal
         showModal={showModal}
         setShowModal={setShowModal}
         handleSubmit={handleSubmitReceipt}
